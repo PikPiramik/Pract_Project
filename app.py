@@ -24,8 +24,8 @@ def scan():
         scan_type = request.form['scan_type']
         
         # Проверка разрешённых целей
-        if target not in app.config['ALLOWED_TARGETS']:
-            return "Недопустимая цель сканирования", 400
+        #if target not in app.config['ALLOWED_TARGETS']:
+            #return "Недопустимая цель сканирования", 400
             
         report_id = run_nmap_scan(target, scan_type)
         return redirect(url_for('report', report_id=report_id))

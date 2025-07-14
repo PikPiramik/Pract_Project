@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    background: #34495e;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.feature {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 30%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+label, select, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+select, button {
+    padding: 0.5rem;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.report-actions {
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.btn {
+    background: #27ae60;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.scan-input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.scan-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.scan-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Добавьте в конец файла */
+
+.scan-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.scan-form {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.hint {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.scan-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.option {
+    position: relative;
+}
+
+.option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.option label {
+    display: block;
+    padding: 1.2rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option input[type="radio"]:checked + label {
+    border-color: #3498db;
+    background: #f0f8ff;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+}
+
+.option-title {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+}
+
+.option-description {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.scan-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.scan-button:hover {
+    background: #219653;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.icon-scan {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M4 4h4V2H2v6h2V4zm16-2h-4v2h4v4h2V2h-2zm-8 16h2v4h-2v-4zM2 18v4h4v-2H4v-2H2zm20 0v2h-2v2h2v2h2v-6h-2z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Футер */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
