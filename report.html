@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <h2>Отчёт сканирования</h2>
-    <div class="report-actions">
-        <a href="{{ url_for('download_report', report_id=report_id) }}" class="btn">Скачать отчёт</a>
-    </div>
-    <iframe src="{{ url_for('static', filename=report_path) }}" width="100%" height="600px"></iframe>
-{% endblock %}
