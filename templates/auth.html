@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'Регистрация' if form_type == 'register' else 'Авторизация' }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .alert { padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        .alert-success { background-color: #dff0d8; color: #3c763d; }
+        .alert-error { background-color: #f2dede; color: #a94442; }
+        form { display: flex; flex-direction: column; gap: 10px; }
+        input, button { padding: 8px; font-size: 16px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>{{ 'Регистрация' if form_type == 'register' else 'Авторизация' }}</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if form_type == 'register' %}
+        <form method="POST" action="{{ url_for('register') }}">
+            <label>Email: <input type="email" name="email" required></label>
+            <label>Имя пользователя: <input type="text" name="username" required></label>
+            <label>Пароль (минимум 6 символов): <input type="password" name="password" required minlength="6"></label>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+    {% else %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <label>Email: <input type="email" name="email" required></label>
+            <label>Пароль: <input type="password" name="password" required></label>
+            <button type="submit">Войти</button>
+        </form>
+        <p>Нет аккаунта? <a href="{{ url_for('register') }}">Регистрация</a></p>
+    {% endif %}
+</body>
+</html>

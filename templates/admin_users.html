@@ -1,0 +1,25 @@
+<!-- templates/admin_users.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Админ-панель: Список пользователей</h1>
+{% if users %}
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user[0] }}</td> <!-- id -->
+        <td>{{ user[1] }}</td> <!-- email -->
+        <td>{{ user[2] }}</td> <!-- username -->
+        <td>{{ user[3] }}</td> <!-- role -->
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Нет зарегистрированных пользователей.</p>
+{% endif %}
+{% endblock %}

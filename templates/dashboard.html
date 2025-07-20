@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .dashboard {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+  }
+
+  .profile-box {
+    width: 200px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  .user-info {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .scan-section {
+    margin-left: 50px;
+    flex: 1;
+  }
+
+  .scan-section h2 {
+    margin-top: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  table, th, td {
+    border: 1px solid #bbb;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .actions a {
+    margin: 0 5px;
+    color: #0645AD;
+    text-decoration: none;
+  }
+
+  .links {
+    margin-top: 20px;
+  }
+
+  .links a {
+    margin-right: 20px;
+    color: #0645AD;
+    text-decoration: none;
+  }
+</style>
+
+<div class="dashboard">
+  <div class="profile-box">
+    <img src="{{ url_for('static', filename='images/человек.png') }}" class="avatar" alt="Аватар">
+    <div class="user-info">
+      <div><strong>{{ current_user.username }}</strong></div>
+      <div>{{ current_user.email }}</div>
+    </div>
+  </div>
+
+  <div class="scan-section">
+    <h2>Результаты сканирований:</h2>
+
+    {% if scans %}
+      <table>
+        <tr>
+          <th>ID отчёта</th>
+          <th>Дата создания</th>
+          <th>Действия</th>
+        </tr>
+        {% for scan in scans %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ scan[3] }}</td>
+          <td class="actions">
+            <a href="{{ url_for('report', report_id=scan[0]) }}">Просмотреть</a>
+            <a href="{{ url_for('download_report', report_id=scan[0]) }}">Скачать</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>У вас пока нет отчётов.</p>
+    {% endif %}
+
+    <div class="links">
+      <a href="{{ url_for('scan') }}">Вернуться к сканированию</a>
+      <a href="{{ url_for('index') }}">На главную</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

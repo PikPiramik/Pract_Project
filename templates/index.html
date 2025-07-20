@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Добро пожаловать!</h1>
+    <p>Система для сканирования сетевой инфраструктуры на уязвимости</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if is_logged_in %}
+        <p>Вы вошли как: {{ username }}</p>
+        <p><a href="{{ url_for('dashboard') }}" class="btn">Личный кабинет</a></p>
+        <p><a href="{{ url_for('logout') }}" class="btn">Выйти из аккаунта</a></p>
+    {% else %}
+        <p>Вы не авторизованы.</p>
+        <p><a href="{{ url_for('login') }}" class="btn">Войти в аккаунт</a></p>
+    {% endif %}
+
+    <div class="features">
+        <div class="feature">
+            <h3>Быстрое сканирование</h3>
+            <p>Обнаружение открытых портов и служб</p>
+        </div>
+        <div class="feature">
+            <h3>Проверка уязвимостей</h3>
+            <p>Использование Owasp ZAP для анализа</p>
+        </div>
+        <div class="feature">
+            <h3>Детальные отчёты</h3>
+            <p>Формирование HTML отчётов по результатам</p>
+        </div>
+    </div>
+
+    <style>
+        .alert-success { color: green; }
+        .alert-error { color: red; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .feature {
+            text-align: center;
+            width: 30%;
+        }
+    </style>
+{% endblock %}
