@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Инициализация Flask
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'  # Замените на безопасный ключ
+app.secret_key = 'your-secret-key'  # Ключ безопасности
 from config import Config
 app.config.from_object(Config)
 
@@ -455,4 +455,5 @@ def dashboard():
 if __name__ == '__main__':
     os.makedirs(app.config['SCAN_RESULTS_DIR'], exist_ok=True)
     init_db()  # Инициализация базы данных
+
     app.run(host='0.0.0.0', port=5000, debug=True)
